@@ -89,3 +89,16 @@ class Graph:
         for next_vert in vertex.get_connections():
             if next_vert not in visited:
                 self.depth_first_search(next_vert, visited)
+
+    ##### watch videos
+    # def dfs_i(self, starting_vert):
+    #     to_visit = Queue()
+    #     visited = set()
+    #     to_visit.enqueue(starting_vert)
+    #     visited.add(starting_vert)
+    #     while to_visit.size() > 0:
+    #         current_vert = to_visit.dequeue()
+    #         for next_vert in current_vert.get_connections():
+    #             if next_vert not in visited:
+    #                 visited.add(next_vert)
+    #                 to_visit.enqueue(next_vert)
