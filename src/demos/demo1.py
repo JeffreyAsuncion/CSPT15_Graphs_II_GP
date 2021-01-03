@@ -43,50 +43,49 @@ def flood_fill(image, sr, sc, new_color):
     Output:
     List[List[int]]
     """
-    # Your code here
+     # Your code here
     # DFS recursive approach
 
-
-    # set the row length to the len of image
-    RL = len(image)
+    # set the row length to the len of the image
+    row_length = len(image)
     # set col length to len of image[0]
-    CL = len(image[0])
-    # extrapolate the colorfrom the image at starting row(sr) and the starting col(sc)
+    column_length = len(image[0])
+    # extrapolate the color from the image at the staring row and staring col
     color = image[sr][sc]
 
     # check if the color is the same as the new color
     if color == new_color:
-        # return the image (no change)
+        # return the image
         return image
 
-    def dft(r, c): # r row and c col
+    # simple recursive DFS
+    def dft(row, col):
         # check if the image at r and c is equal to color
-        if image[r][c] == color:
+        if image[row][col] == color:
             # set the image at r and c to the new color
-            image[r][c] = new_color
+            image[row][col] = newColor
 
-            # do some recursive calls
+            # do some recursive calls (get connections)
             # if the r is >= 1
-            if r >= 1:
-                # call dft pass in r - 1, c
-                dft(r - 1, c)
-            # if r + 1 < row length
-            if r + 1 < RL:
-                # call dft passing in r + 1, c
-                dft(r + 1, c)
-            # if the c is >= 1
-            if c >= 1:
-                # call dft pass in r, c - 1
-                dft(r, c - 1)
-            # if c + 1 < row length
-            if c + 1 < CL:
-                # call dft passing in r, c + 1
-                dft(r, c + 1)
-    
+            if row - 1 >= 1:
+                # call dft passing in r-1, c
+                dft(row-1, col)
+            # if r+1 < row length
+            if row + 1 < row_length:
+                # call dft passing in r+1, c
+                dft(row+1, col)
+            # if the c is >=1
+            if col - 1 >= 1:
+                # call dft passing in r, c-1
+                dft(row, col-1) 
+            # if c+1 < col length
+            if col + 1 < column_length:
+                # call dft passing in r, c+1
+                dft(row, col+1)
+
     # do an initial call to dft passing in sr and sc
     dft(sr, sc)
-
-    # return the image
+    # return image
     return image
 
 
