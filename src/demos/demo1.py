@@ -60,6 +60,9 @@ def flood_fill(image, sr, sc, new_color):
 
     # simple recursive DFS
     def dft(row, col):
+
+        # this is the only block that changes in most Graph Problems
+        # here we are swapping color / or counting islands
         # check if the image at r and c is equal to color
         if image[row][col] == color:
             # set the image at r and c to the new color
